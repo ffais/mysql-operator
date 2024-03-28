@@ -323,7 +323,7 @@ func (r *MySQLUserReconciler) updateGrants(ctx context.Context, mysqlClient *sql
 	}
 
 	for _, grant := range grants {
-		_, err := mysqlClient.ExecContext(ctx, fmt.Sprintf("GRANT %s ON %s TO '%s'@'%s'", grant.Privileges, grant.On, mysqlUserName, mysqlUserHost))
+		_, err := mysqlClient.ExecContext(ctx, fmt.Sprintf("GRANT %s ON %s TO '%s'@'%s';", grant.Privileges, grant.On, mysqlUserName, mysqlUserHost))
 		if err != nil {
 			return err
 		}

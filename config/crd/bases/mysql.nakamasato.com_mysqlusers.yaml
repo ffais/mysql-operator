@@ -56,6 +56,23 @@ spec:
           spec:
             description: MySQLUserSpec defines the desired state of MySQLUser
             properties:
+              grants:
+                description: Grants for the MySQL user
+                items:
+                  description: Grant defines the privileges and the resource for a
+                    MySQL user
+                  properties:
+                    "on":
+                      description: Resource on which the privileges are applied
+                      type: string
+                    privileges:
+                      description: Privileges for the MySQL user
+                      type: string
+                  required:
+                  - "on"
+                  - privileges
+                  type: object
+                type: array
               host:
                 default: '%'
                 description: MySQL hostname for MySQL account
@@ -64,16 +81,6 @@ spec:
                 description: MySQL (CRD) name to reference to, which decides the destination
                   MySQL server
                 type: string
-              grants:
-                description: Grants for the MySQL user
-                items:
-                  type: object
-                  properties:
-                    privileges:
-                      type: string
-                    on:
-                      type: string
-                type: array
             required:
             - mysqlName
             type: object

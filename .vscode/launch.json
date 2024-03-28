@@ -1,0 +1,19 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    { 
+      "name": "mysql-operator",
+      "type": "go",
+      "request": "launch",
+      "mode": "auto", 
+      "program": "${workspaceFolder}/cmd/main.go",
+      "env": { 
+        "WATCH_NAMESPACE": "digitalhub-dev",
+        "SECRET_NAMESPACE": "digitalhub-dev"
+      },
+      "args": [
+        "--cloud-secret-manager=k8s",
+      ]
+    }
+  ] 
+}
